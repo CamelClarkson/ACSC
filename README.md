@@ -21,7 +21,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 
 
 ### Additional Setup for Windows Users
-- Install the free home edition of (MobaXterm)[https://mobaxterm.mobatek.net/download.html]
+- Install the free home edition of [MobaXterm](https://mobaxterm.mobatek.net/download.html)
 - Create an SSH session
 
 ### Connect to the Server
