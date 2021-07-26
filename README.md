@@ -34,10 +34,10 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 ### Review Linux Permissions
 
 
-## Day 2:
+## Day 2: Encryption
 
 ## Day 3: XSS
 
 ## Day 4: Ransomware
 
-## Day 5
+## Day 5: 
