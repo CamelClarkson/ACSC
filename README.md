@@ -71,8 +71,10 @@ app.listen(port, function() {
 - Ensure that you see your web page
 - Kill the node server using `kill`
 
-## Day 3: Ransomware
 
-## Day 4: Encryption Part 1
 
-## Day 5: Encryption Part 2
+## Day 3: Encryption Part 1
+
+## Day 4: Encryption Part 2
+
+## Day 5: Ransomware
