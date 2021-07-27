@@ -156,7 +156,7 @@ with open(args.file, 'w') as f:
 ```
 
 
-### Probabalistic Decoding of Simple Ciphers
+### Probabalistic Decoding of Simple Substitution Ciphers
 - Letters occur with certain frequencies in English
 - Use this to decode the following message
 ```
