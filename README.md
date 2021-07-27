@@ -74,6 +74,19 @@ app.listen(port, function() {
 
 
 ## Day 3: Encryption (Introduction)
+- Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
+
+### Caesar Cipher
+
+
+### Probabalistic Decoding of Simple Ciphers
+- Letters occur with certain frequencies in English
+- Use this to decode the following message
+```
+To add
+```
+- Heres a template python script to start you off
+
 
 ## Day 4: Encryption (RSA Key Generation)
 
