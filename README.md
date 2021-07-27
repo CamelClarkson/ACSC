@@ -225,8 +225,7 @@ with open(args.file, 'w') as f:
     f.write(out_text)
 ```
 
-
-### Probabalistic Decoding of Simple Substitution Ciphers
+### Frequency Analysis
 - Letters occur with certain frequencies in English
 - Use this to decode the following message
 ```
