@@ -67,7 +67,7 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 
-fib(n)
+print(fib(n))
 ```
 - Currently, you have to manually edit the script to change values for `n`
 - What if you could pass command line arguments?
@@ -100,7 +100,7 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 
-fib(args.n)
+print(fib(args.n))
 ```
 
 
