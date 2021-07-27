@@ -77,6 +77,83 @@ app.listen(port, function() {
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
 
 ### Caesar Cipher
+- Idea is to shift each character `k` places, this is your key
+- E.g., if `k = 3` and we have input string `the` then by shift each letter by 3 we have `wkh`
+- To decrypt the shift is performed the other way
+- Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 25 = 1 (remember in computer science the first index is 0!)
+- Here is an example script
+```python
+import argparse
+import string
+
+# Parse input arguments
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'file',
+    type=str,
+    help='File to encrypt or decrypt'
+)
+parser.add_argument(
+    '-e', '--encrypt',
+    action='store_true',
+    help='Encrypt the file'
+)
+parser.add_argument(
+    '-d', '--decrypt',
+    action='store_true',
+    help='Decrypt the file'
+)
+
+args = parser.parse_args()
+
+# check if valid input
+assert not (args.encrypt and args.decrypt), "Cannot both encrypt and decrypt!"
+assert args.encrypt or args.decrypt, "No flags set!"
+
+# determines the offeset for caesar cipher
+key = 13
+
+# All ascii printable characters
+characters = string.printable
+n_chars = len(characters)
+
+
+def encrypt(in_text):
+    out_text = ''
+    for character in in_text:
+        idx = characters.index(character)
+        # Modulus addition, i.e., if we go past n_chars wrap back to 0
+        new_idx = (idx + key) % n_chars
+        new_character = characters[new_idx]
+        out_text += new_character
+
+    return out_text
+
+
+def decrypt(in_text):
+    out_text = ''
+    for character in in_text:
+        idx = characters.index(character)
+        # Modulus addition, i.e., if we go past n_chars wrap back to 0
+        new_idx = (idx - key) % n_chars
+        new_character = characters[new_idx]
+        out_text += new_character
+
+    return out_text
+
+# load input file
+with open(args.file, 'r') as f:
+    in_text = f.read()
+
+# rewrite file
+with open(args.file, 'w') as f:
+    if args.encrypt:
+        out_text = encrypt(in_text)
+    if args.decrypt:
+        out_text = decrypt(in_text)
+
+    f.write(out_text)
+```
 
 
 ### Probabalistic Decoding of Simple Ciphers
