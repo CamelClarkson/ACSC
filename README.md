@@ -143,7 +143,7 @@ app.listen(port, function() {
 
 
 
-## Day 3: Encryption (Introduction)
+## Day 3: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
 
 ### Caesar Cipher
@@ -235,7 +235,10 @@ To add
 - Heres a template python script to start you off
 
 
-## Day 4: Encryption (RSA Key Generation)
+## Day 4: Encryption II (Public Key Cryptography)
+- Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
+
+### RSA Motivation and Intro
 
 ## Day 5: Ransomware
 
