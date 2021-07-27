@@ -35,6 +35,41 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 
 
 ## Day 2: XSS
+- Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
+- Create a new directory for this project and navigate to it
+- Download `public.tar.gz` from this github repo
+- Use the `tar` command to extract the conents and use the `man` command to figure out what flags to use
+- The contents of the `public.tar.gz` file contain all the HTML, CSS, and client-side JS for you website
+- The main html file is located at `public/index.html`
+- Install the express package with `npm install express`
+- Create `app.js` in your project directory
+- Add the following code to your `app.js` file
+```js
+// Import express package
+var express = require('express');
+var app = express();
+// specify port number
+var port = 8000;
+
+// Handle request to serve main file
+app.get('/', function(req, res) {
+        // __dirname is the working directory of the project
+        res.sendFile(__dirname + '/public/index.html');
+});
+
+// allow the server to serve content from public directory
+app.use(express.static('public'));
+
+// Set server to listen to `port`
+app.listen(port, function() {
+        console.log('Server on port: ' + port);
+});
+```
+- Change the port number to one the instructors will give you
+- Run the server in the background using the command `node app.js &`
+- To see your webpage, open up your preferred web browser and navigate to `http://3.12.96.179:<your-port-number-here>`
+- Ensure that you see your web page
+- Kill the node server using `kill`
 
 ## Day 3: Ransomware
 
