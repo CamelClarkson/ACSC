@@ -73,9 +73,9 @@ app.listen(port, function() {
 
 
 
-## Day 3: Encryption Part 1
+## Day 3: Encryption (Introduction)
 
-## Day 4: Encryption Part 2
+## Day 4: Encryption (RSA Key Generation)
 
 ## Day 5: Ransomware
 
