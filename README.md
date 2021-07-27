@@ -43,6 +43,67 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 - What does `chmod 744 my_file` do to the permssions?
 
 
+### Intro to Python Scripting
+- Python is very powerful scripting language used for machine learning, scientific computer, web development, software engineering, data science, and many more fields
+- Python has a simple syntax that is designed to be readable and expressive
+
+#### First Python Script with the Fibonacci sequence
+- Fibonacci sequence is a famous recurrence relationship that occurs often in nature
+- The first two elements are `f[0] = 1` and `f[1] = 1`
+- Then for any `n > 1` we have `f[n] = f[n-1] + f[n-2]`
+- We can write a recurisive python function for this
+```python
+
+n = 10
+
+# Fibonacci function
+def fib(n):
+    # conditionals in python, == checks for equality, = is for assignment
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+fib(n)
+```
+- Currently, you have to manually edit the script to change values for `n`
+- What if you could pass command line arguments?
+- Use `argpase` see the example code below
+```python
+# use the import keyword to import additional libraries!
+import argparse
+
+parser = argparse.ArgumentParser()
+
+# add argument and doc string to appear if -h or --help is entered
+parser.add_argument(
+    'n',
+    type=int,
+    help='n-th element of Fibonacci sequence to compute'
+)
+
+# grab arguments
+args = parser.parse_args()
+
+
+# Fibonacci function
+def fib(n):
+    # conditionals in python, == checks for equality, = is for assignment
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+fib(args.n)
+```
+
+
 ## Day 2: XSS
 - Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
 - Create a new directory for this project and navigate to it
