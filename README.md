@@ -80,7 +80,7 @@ app.listen(port, function() {
 - Idea is to shift each character `k` places, this is your key
 - E.g., if `k = 3` and we have input string `the` then by shift each letter by 3 we have `wkh`
 - To decrypt the shift is performed the other way
-- Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 25 = 1 (remember in computer science the first index is 0!)
+- Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 26 = 0 (remember in computer science the first index is 0!)
 - Here is an example script
 ```python
 import argparse
