@@ -31,7 +31,16 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 - Use the ssh command to connect to the server
 - Use the command `passwd` to change your password upon login
 
-### Review Linux Permissions
+### Review Linux File Permissions
+- Three different types of classes of users:
+  - The file owner
+  - Group members
+  - Everyone else
+- Each class has three permissions
+  - The read permission (100 = 4)
+  - The write permission (010 = 2)
+  - The execute permission (001 = 1)
+- What does `chmod 744 my_file` do to the permssions?
 
 
 ## Day 2: XSS
