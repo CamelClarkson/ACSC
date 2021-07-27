@@ -1,5 +1,5 @@
-# ACSC 2021
-The Advanced Cyber Security Camp provides students with a thorough introduction to different types of malware and attacks.
+# Cyber Camp 2.0 2021
+The Cyber Camp 2.0 provides students with a thorough introduction to different types of malware and attacks.
 Students will learn about different attack vectors and implement there own attack vectors along with how to mitigate them.
 The target demographic are students in years 9-12 of schooling who have taken either a first year programming course or introductory Cyber Security Camp offered by the instructors.
 
