@@ -31,6 +31,31 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 - Use the ssh command to connect to the server
 - Use the command `passwd` to change your password upon login
 
+### Review of Essential Linux Commands
+- What do the following commands do?
+  - `cd`
+  - `ls`
+  - `pwd`
+  - `mkdir`
+  - `chmod`
+
+### Review of VIM
+- Vim (Vi IMproved) is a text editor for Linux and the preferred text editor for this course
+- Two primary modes:
+  - Escape: the mode where you type commands, which you enter via `<esc>` 
+  - Insert: the mode where you type text, which you enter from escape mode via `i`
+- List of very helpful commands. **All commands can only be executed from escape mode!**
+  - `:wq` save and quit the file
+  - `h`, `j`, `k`, and `l` navigate around the file: left, up, down, right
+  - `o` insert line below
+  - `O` insert line above
+  - `dd` delete current line
+  - `yy` to yank current line to vim buffer, i.e., copy
+  - `p` to paste content in vim buffer
+  - `^` navigate to beginning of line
+  - `$` navigate to end of line
+- For further information see this [tutorial](https://www.openvim.com/)
+
 ### Review Linux File Permissions
 - Three different types of classes of users:
   - The file owner
@@ -69,6 +94,8 @@ def fib(n):
 
 print(fib(n))
 ```
+- Save the script as `fib.py`
+- To run the script enter `python3 fib.py`
 - Currently, you have to manually edit the script to change values for `n`
 - What if you could pass command line arguments?
 - Use `argpase` see the example code below
