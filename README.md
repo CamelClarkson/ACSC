@@ -178,7 +178,15 @@ app.listen(port, function() {
 - E.g., if `k = 3` and we have input string `the` then by shift each letter by 3 we have `wkh`
 - To decrypt the shift is performed the other way
 - Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 26 = 0 (remember in computer science the first index is 0!)
-- Here is an example script
+- Here is an example of a Caesar Cipher
+```
+This is some text to be encrypted.
+```
+And once encrypted we have
+```
+guvF vF FBzr GrKG GB or rApELCGrq
+```
+- Here how to write this program
 ```python
 import argparse
 import string
@@ -218,11 +226,14 @@ n_chars = len(characters)
 def encrypt(in_text):
     out_text = ''
     for character in in_text:
-        idx = characters.index(character)
-        # Modulus addition, i.e., if we go past n_chars wrap back to 0
-        new_idx = (idx + key) % n_chars
-        new_character = characters[new_idx]
-        out_text += new_character
+        if character in characters:
+            idx = characters.index(character)
+            # Modulus addition, i.e., if we go past n_chars wrap back to 0
+            new_idx = (idx + key) % n_chars
+            new_character = characters[new_idx]
+            out_text += new_character
+        else:
+            out_text += character
 
     return out_text
 
@@ -230,13 +241,17 @@ def encrypt(in_text):
 def decrypt(in_text):
     out_text = ''
     for character in in_text:
-        idx = characters.index(character)
-        # Modulus addition, i.e., if we go past n_chars wrap back to 0
-        new_idx = (idx - key) % n_chars
-        new_character = characters[new_idx]
-        out_text += new_character
+        if character in characters:
+            idx = characters.index(character)
+            # Modulus addition, i.e., if we go past n_chars wrap back to 0
+            new_idx = (idx - key) % n_chars
+            new_character = characters[new_idx]
+            out_text += new_character
+        else:
+            out_text += character
 
     return out_text
+
 
 # load input file
 with open(args.file, 'r') as f:
