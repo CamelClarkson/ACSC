@@ -198,8 +198,206 @@ server.listen(port, () => {
 - Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
 
 ### Building a Chat Room Using Node.js and Socket.io
-- 
+<!-- - Download `public.tar.gz` from  -->
+- Run `npm install socket.io` to instal the socket.io plugin
+- Modify `index.html` so it contains a login portal and chat area by ading the following code
+```html
+		<!-- Enter username on login -->
+		<div class="modal fade" id="username_modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">User Login</h4>
+					</div>
+					<div class="modal-body">
+						<!-- enter username  -->
+						<form onsubmit="return false;">
+							<div class="form-group">
+								<input type="text" class="form-control" id="username_field" placeholder="Enter username">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button id="close_modal" type="button" class="btn btn-primary">Enter Chat</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- chat area -->
+    <div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<ul id="messages"></ul>
+				</div>
+			</div>
+			<div class="row bottom">
+				<div class="col-12">
+					<form role="form" onsubmit="return false;">
+						<div class="input-group">
+							<input id="message_field" class="form-control" type="text" placeholder="Enter message">
+							<div class="input-group-btn">
+									<button id="message_submit" type="button" class="btn btn-primary">Send</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+```
+- Also include our stylesheet and client side javascript (to be created) with the following to lines in the `<head>` tag in addition to including socket.io
+```html
+<!-- Include socket.io -->
+<script src="/socket.io/socket.io.js"></script>
 
+<!-- Include our custom stylesheet and script -->
+<link rel="stylesheet" href="/public/styles/style.css">
+<script type="text/javascript" src="/public/scripts/client.js"></script>
+```
+- Add the following stylesheet to `public/styles/style.css`
+```css
+#messages {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+	font-size: 125%;
+}
+
+#messages li {
+	font-family: sans-serif;
+}
+
+/* Make each entry alternate color for easier reading */
+#messages li:nth-child(odd) {
+	background: rgb(245, 245, 245);
+}
+
+#messages: li:nth-child(even) {
+	background: rgb(200, 200, 200);
+}
+
+.bottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+```
+- Create the following `public/scripts/client.js` file
+```js
+$(document).ready(() => {
+	const socket = io();
+	const timeout = 1500; // ms
+	var search_time_out = 0;
+	var username = null;
+	var in_modal = true;
+
+	// get login info from modal
+	$(window).load(() => {
+		$('#username_modal').modal('show');
+	});
+
+	// once username is submitted close modal
+	$('#close_modal').on('click', () => {
+		get_username();
+		enter_chat_room();
+	});
+
+	function get_username() {
+		username = $('#username_field').val() !== '' ? $('#username_field').val() : 'anonymous';
+		$('#username_field').val('');
+	}
+
+	function enter_chat_room() {
+		if (username !== null) {
+			$('#username_modal').modal('hide');
+			in_modal = false;
+			socket.emit('init', username);
+		}
+	}
+
+	// listen for enter keypress (13)
+	$(document).keypress((event) => {
+		if (event.which === 13) {
+			if (in_modal) {
+				get_username();
+				enter_chat_room();
+			} else {
+				send_message();
+			}
+		}
+	});
+
+	// listen for send button press
+	$('#message_submit').on('click', () => {
+		send_message();
+	});
+
+	function send_message() {
+		var msg = $('#message_field').val();
+
+		if (msg !== '') {
+			$('#message_field').val('');
+
+			socket.emit('msg', {
+				username: username,
+				message: msg,
+				admin: false,
+			});
+		}
+	}
+
+	function add_message(data) {
+		var $li = data.admin ? $('<li>').append(data.message) : $('<li>').append(data.username + ': ' + data.message);
+
+		$('#messages').append($li);
+	}
+
+	// listen for broadcasts
+	socket.on('msg', (data) => {
+		add_message(data);
+	});
+
+});
+```
+- Lastly modify app.js so it contains socket.io handling
+```js
+// setup socket handling
+io.on('connection', (socket) => {
+	// get connected users data
+	socket.on('init', (data) => {
+		socket.username = data;
+		console.log(data + ' has joined the chat')
+	});
+
+	// send users messages
+	socket.on('msg', (data) => {
+		console.log(data.username + ': ' + data.message);
+		io.sockets.emit('msg', data);
+	});
+
+	socket.on('disconnect', () => {
+		if (socket.users !== undefined) {
+			console.log(socket.username + ' has disconnected.');
+			io.sockets.emit('msg', {
+				username: null,
+				message: socket.username + ' has disconnected.',
+				admin: true
+			});
+		}
+	});
+});
+```
+- Add routing code to serve up the CSS and JS files you created
+```js
+app.get('/public/scripts/client.js', (req, res) => {
+	res.sendFile(__dirname + '/public/scripts/client.js');
+});
+
+app.get('/public/styles/style.css', (req, res) => {
+	res.sendFile(__dirname + '/public/styles/style.css');
+});
+```
 
 ## Day 3: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
