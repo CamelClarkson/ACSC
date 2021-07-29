@@ -131,42 +131,54 @@ print(fib(args.n))
 ```
 
 
-## Day 2: XSS
-- Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
+## Day 2: Cross Site Scriping (XSS) Attack
+### HTML, CSS, Javascript, and Node.js Review
+- What does HTML do?
+- What does CSS do?
+- What does Javascript do?
+- What is Node.js?
+
+### Build Basic Bootstrap Webpage with Node.js
+- Bootstrap is a tool to "quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins."
 - Create a new directory for this project and navigate to it
-- Download `public.tar.gz` from this github repo
-- Use the `tar` command to extract the conents and use the `man` command to figure out what flags to use
-- The contents of the `public.tar.gz` file contain all the HTML, CSS, and client-side JS for you website
-- The main html file is located at `public/index.html`
-- Install the express package with `npm install express`
-- Create `app.js` in your project directory
-- Add the following code to your `app.js` file
-```js
-// Import express package
-var express = require('express');
-var app = express();
-// specify port number
-var port = 8000;
+- First initialize the project with node running `npm init`, note when prompted for entry point enter `app.js` NOT `index.js`
+- Install the express package via `npm install express`
+- Create `app.js` in your project directory with the following code
+```javascript
 
-// Handle request to serve main file
-app.get('/', function(req, res) {
-        // __dirname is the working directory of the project
-        res.sendFile(__dirname + '/public/index.html');
-});
 
-// allow the server to serve content from public directory
-app.use(express.static('public'));
 
-// Set server to listen to `port`
-app.listen(port, function() {
-        console.log('Server on port: ' + port);
-});
+```
+- Now create the `public` and `public/views` sub-directories
+- Create our main HTML file `public/views/index.html`, this will be what you see when you connect to the webpage use this template
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Basic Webpage</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device=width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://cdn.tutorialjinni.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://cdn.tutorialjinni.com/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.tutorialjinni.com/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<h1> This is a webpage! </h1>
+			</div>
+		</div>
+	</body>
+</html>
 ```
 - Change the port number to one the instructors will give you
 - Run the server in the background using the command `node app.js &`
 - To see your webpage, open up your preferred web browser and navigate to `http://3.12.96.179:<your-port-number-here>`
 - Ensure that you see your web page
 - Kill the node server using `kill`
+
+- Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
 
 
 
