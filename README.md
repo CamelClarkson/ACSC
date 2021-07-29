@@ -273,6 +273,10 @@ with open(args.file, 'w') as f:
 - We can use these letter statistics to decode the encrypted file
 - An example is found [here](https://www.youtube.com/watch?v=nikWSEjFCWg)
 
+### Introduction to Prime Numbers
+- What is a prime number?
+- 
+
 
 ## Day 4: Encryption II (Public Key Cryptography)
 - Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
