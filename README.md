@@ -202,48 +202,48 @@ server.listen(port, () => {
 - Run `npm install socket.io` to instal the socket.io plugin
 - Modify `index.html` so it contains a login portal and chat area by ading the following code
 ```html
-		<!-- Enter username on login -->
-		<div class="modal fade" id="username_modal" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">User Login</h4>
+<!-- Enter username on login -->
+<div class="modal fade" id="username_modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">User Login</h4>
+			</div>
+			<div class="modal-body">
+				<!-- enter username  -->
+				<form onsubmit="return false;">
+					<div class="form-group">
+						<input type="text" class="form-control" id="username_field" placeholder="Enter username">
 					</div>
-					<div class="modal-body">
-						<!-- enter username  -->
-						<form onsubmit="return false;">
-							<div class="form-group">
-								<input type="text" class="form-control" id="username_field" placeholder="Enter username">
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button id="close_modal" type="button" class="btn btn-primary">Enter Chat</button>
-					</div>
-				</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="close_modal" type="button" class="btn btn-primary">Enter Chat</button>
 			</div>
 		</div>
-		
-		<!-- chat area -->
-    <div class="container-fluid">
-			<div class="row">
-				<div class="col-12">
-					<ul id="messages"></ul>
-				</div>
-			</div>
-			<div class="row bottom">
-				<div class="col-12">
-					<form role="form" onsubmit="return false;">
-						<div class="input-group">
-							<input id="message_field" class="form-control" type="text" placeholder="Enter message">
-							<div class="input-group-btn">
-									<button id="message_submit" type="button" class="btn btn-primary">Send</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
+	</div>
+</div>
+
+<!-- chat area -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<ul id="messages"></ul>
 		</div>
+	</div>
+	<div class="row bottom">
+		<div class="col-12">
+			<form role="form" onsubmit="return false;">
+				<div class="input-group">
+					<input id="message_field" class="form-control" type="text" placeholder="Enter message">
+					<div class="input-group-btn">
+							<button id="message_submit" type="button" class="btn btn-primary">Send</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 ```
 - Also include our stylesheet and client side javascript (to be created) with the following to lines in the `<head>` tag in addition to including socket.io
 ```html
@@ -287,8 +287,6 @@ server.listen(port, () => {
 ```js
 $(document).ready(() => {
 	const socket = io();
-	const timeout = 1500; // ms
-	var search_time_out = 0;
 	var username = null;
 	var in_modal = true;
 
@@ -398,6 +396,32 @@ app.get('/public/styles/style.css', (req, res) => {
 	res.sendFile(__dirname + '/public/styles/style.css');
 });
 ```
+
+### Demo XSS Attack
+- Note we can execute arbitrary code on every client's instance of the chatroom
+
+### Mitigating the XSS Attack
+- We need to sanitize incoming messages to make sure we don't just execute arbitrary code
+- Replace special symbols with escaped ones
+
+| Escape Character | Symbol |
+|:------|:----------------|
+|\&amp;| & |
+|\&lt;| < |
+|\&gt;|>|
+
+- To do this in `app.js` create a function called `sanitize_input` like so
+```js
+function sanitize_input(content) {
+	// add code to clean content here
+	return content;
+}
+```
+- And in the socket handling section before `io.osockes.emit('msg', data);` add the line
+```js
+data.message = sanitize_input(data.message);
+```
+- To santize code use string replace, e.g., `content = content.replace(/stuff-to-replace/g, 'replaced-string');`
 
 ## Day 3: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
