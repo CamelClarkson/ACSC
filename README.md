@@ -172,6 +172,8 @@ app.listen(port, function() {
 
 ## Day 3: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
+- Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
+```
 
 ### Caesar Cipher
 - Idea is to shift each character `k` places, this is your key
@@ -180,7 +182,7 @@ app.listen(port, function() {
 - Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 26 = 0 (remember in computer science the first index is 0!)
 - Here is an example of a Caesar Cipher
 ```
-This is some text to be encrypted.
+this message needs to be encrypted
 ```
 And once encrypted we have
 ```
