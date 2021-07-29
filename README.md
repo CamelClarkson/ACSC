@@ -143,14 +143,29 @@ print(fib(args.n))
 - Create a new directory for this project and navigate to it
 - First initialize the project with node running `npm init`, note when prompted for entry point enter `app.js` NOT `index.js`
 - Install the express package via `npm install express`
+#### Setting up the app.js file
 - Create `app.js` in your project directory with the following code
 ```javascript
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const port = 8000;
 
+// serve request files
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/public/views/index.html');
+});
 
-
+// set server to listen to specific port
+server.listen(port, () => {
+	console.log('listening on port: ' + port);
+});
 ```
+- Change the port number to one the instructors will give you
+#### Creating the HTML page
 - Now create the `public` and `public/views` sub-directories
-- Create our main HTML file `public/views/index.html`, this will be what you see when you connect to the webpage use this template
+- Create our main HTML file `public/views/index.html`, this will be what you see when you connect to the webpage use this Boostrap based template:
 ```html
 <!DOCTYPE html>
 <html>
@@ -172,14 +187,18 @@ print(fib(args.n))
 	</body>
 </html>
 ```
-- Change the port number to one the instructors will give you
+- Modify the template to include your name in the `<h1>` tag
+#### Running and Connecting to the Server
 - Run the server in the background using the command `node app.js &`
 - To see your webpage, open up your preferred web browser and navigate to `http://3.12.96.179:<your-port-number-here>`
 - Ensure that you see your web page
-- Kill the node server using `kill`
+- Kill the node server using the `kill` command
 
+### Intro to the XSS Attack
 - Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
 
+### Building a Chat Room Using Node.js and Socket.io
+- 
 
 
 ## Day 3: Encryption I (Introduction)
