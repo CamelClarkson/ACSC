@@ -269,11 +269,8 @@ with open(args.file, 'w') as f:
 
 ### Frequency Analysis
 - Letters occur with certain frequencies in English
-- Use this to decode the following message
-```
-To add
-```
-- Heres a template python script to start you off
+- We can use these letter statistics to decode the encrypted file
+- An example is found [here](https://www.youtube.com/watch?v=nikWSEjFCWg)
 
 
 ## Day 4: Encryption II (Public Key Cryptography)
