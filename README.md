@@ -528,7 +528,73 @@ with open(args.file, 'w') as f:
 
 ### Introduction to Prime Numbers
 - What is a prime number?
-- 
+- There are no efficient algorithms for finding primes
+- Prime numbers are 'hard' to find, but 'easy' to test
+- Why might this be useful for security?
+
+## Miller-Rabin Primality Test
+- [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
+- Here is some python code to perform the test
+```python
+import argparse
+import random
+
+# Parse input arguments
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'n',
+    type=int,
+    help='Odd integer larger than 2'
+)
+parser.add_argument(
+    '-k', '--n_of_iters',
+    type=int,
+    default=40,
+    help='Number of iterations of Miller-Rabin test'
+)
+
+args = parser.parse_args()
+
+# check if valid input
+assert not(args.n % 2 == 0 or args.n <= 2), "Not a valid integer!"
+assert args.n_of_iters > 0, "Not a valid number of iterations!"
+
+
+def test(n, a, t, s):
+    # x = a^s  (mod n)
+    x = pow(a, s, n)
+
+    if x == 1 or x == n - 1:
+        return True
+
+    for j in range(t - 1):
+        # x = x^2  (mod n)
+        x = pow(x, 2, n)
+
+        if x == n - 1:
+            return True
+
+    return False
+
+
+# find n = 2^t * s + 1
+n = args.n - 1
+t = 0
+while n % 2 == 0:
+    n /= 2
+    t += 1
+s = int(n)
+
+for i in range(args.n_of_iters):
+    a = random.randint(1, args.n-1)
+    is_prime = test(args.n, a, t, s)
+
+    if not is_prime:
+        print('Composite')
+        exit()
+
+print('Probably Prime')
+```
 
 
 ## Day 4: Encryption II (Public Key Cryptography)
