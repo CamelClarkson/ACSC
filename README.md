@@ -417,7 +417,7 @@ function sanitize_input(content) {
 	return content;
 }
 ```
-- And in the socket handling section before `io.osockes.emit('msg', data);` add the line
+- And in the socket handling section before `io.sockets.emit('msg', data);` add the line
 ```js
 data.message = sanitize_input(data.message);
 ```
