@@ -313,8 +313,7 @@ print('Probably Prime')
 
 Work through this as a class [link](https://github.com/jimmy-ly00/Ransomware-PoC)
 
-
-## Day 6: Cross Site Scriping (XSS) Attack
+## Day 5: Cross Site Scriping (XSS) Attack
 ### HTML, CSS, Javascript, and Node.js Review
 - What does HTML do?
 - What does CSS do?
