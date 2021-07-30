@@ -130,8 +130,191 @@ def fib(n):
 print(fib(args.n))
 ```
 
+## Day 2: Encryption I (Introduction)
+- Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
+- Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
 
-## Day 2: Cross Site Scriping (XSS) Attack
+### Caesar Cipher
+- Idea is to shift each character `k` places, this is your key
+- E.g., if `k = 3` and we have input string `the` then by shift each letter by 3 we have `wkh`
+- To decrypt the shift is performed the other way
+- Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 26 = 0 (remember in computer science the first index is 0!)
+- Here is an example of a Caesar Cipher
+```
+this message needs to be encrypted
+```
+And once encrypted we have
+```
+sghr ldrrzfd mddcr sn ad dmbqxosdc
+```
+- Here how to write this program
+```python
+import argparse
+import string
+
+# Parse input arguments
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'file',
+    type=str,
+    help='File to encrypt or decrypt'
+)
+parser.add_argument(
+    '-e', '--encrypt',
+    action='store_true',
+    help='Encrypt the file'
+)
+parser.add_argument(
+    '-d', '--decrypt',
+    action='store_true',
+    help='Decrypt the file'
+)
+
+args = parser.parse_args()
+
+# check if valid input
+assert not (args.encrypt and args.decrypt), "Cannot both encrypt and decrypt!"
+assert args.encrypt or args.decrypt, "No flags set!"
+
+# determines the offeset for caesar cipher
+key = 13
+
+# All ascii printable characters
+characters = string.printable
+n_chars = len(characters)
+
+
+def encrypt(in_text):
+    out_text = ''
+    for character in in_text:
+        if character in characters:
+            idx = characters.index(character)
+            # Modulus addition, i.e., if we go past n_chars wrap back to 0
+            new_idx = (idx + key) % n_chars
+            new_character = characters[new_idx]
+            out_text += new_character
+        else:
+            out_text += character
+
+    return out_text
+
+
+def decrypt(in_text):
+    out_text = ''
+    for character in in_text:
+        if character in characters:
+            idx = characters.index(character)
+            # Modulus addition, i.e., if we go past n_chars wrap back to 0
+            new_idx = (idx - key) % n_chars
+            new_character = characters[new_idx]
+            out_text += new_character
+        else:
+            out_text += character
+
+    return out_text
+
+
+# load input file
+with open(args.file, 'r') as f:
+    in_text = f.read()
+
+# rewrite file
+with open(args.file, 'w') as f:
+    if args.encrypt:
+        out_text = encrypt(in_text)
+    if args.decrypt:
+        out_text = decrypt(in_text)
+
+    f.write(out_text)
+```
+
+### Frequency Analysis
+- Letters occur with certain frequencies in English
+- We can use these letter statistics to decode the encrypted file
+- An example is found [here](https://www.youtube.com/watch?v=nikWSEjFCWg)
+
+### Introduction to Prime Numbers
+- What is a prime number?
+- There are no efficient algorithms for finding primes
+- Prime numbers are 'hard' to find, but 'easy' to test
+- Why might this be useful for security?
+
+### Miller-Rabin Primality Test
+- [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
+- Here is some python code to perform the test
+```python
+import argparse
+import random
+
+# Parse input arguments
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'n',
+    type=int,
+    help='Odd integer larger than 2'
+)
+parser.add_argument(
+    '-k', '--n_of_iters',
+    type=int,
+    default=40,
+    help='Number of iterations of Miller-Rabin test'
+)
+
+args = parser.parse_args()
+
+# check if valid input
+assert not(args.n % 2 == 0 or args.n <= 2), "Not a valid integer!"
+assert args.n_of_iters > 0, "Not a valid number of iterations!"
+
+
+def test(n, a, t, s):
+    # x = a^s  (mod n)
+    x = pow(a, s, n)
+
+    if x == 1 or x == n - 1:
+        return True
+
+    for j in range(t - 1):
+        # x = x^2  (mod n)
+        x = pow(x, 2, n)
+
+        if x == n - 1:
+            return True
+
+    return False
+
+
+# find n = 2^t * s + 1
+n = args.n - 1
+t = 0
+while n % 2 == 0:
+    n /= 2
+    t += 1
+s = int(n)
+
+for i in range(args.n_of_iters):
+    a = random.randint(1, args.n-1)
+    is_prime = test(args.n, a, t, s)
+
+    if not is_prime:
+        print('Composite')
+        exit()
+
+print('Probably Prime')
+```
+
+
+## Day 3: Encryption II (Public Key Cryptography)
+- Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
+
+### RSA Motivation and Intro
+
+## Day 4: Ransomware
+
+Work through this as a class [link](https://github.com/jimmy-ly00/Ransomware-PoC)
+
+
+## Day 6: Cross Site Scriping (XSS) Attack
 ### HTML, CSS, Javascript, and Node.js Review
 - What does HTML do?
 - What does CSS do?
@@ -423,185 +606,3 @@ data.message = sanitize_input(data.message);
 ```
 - To santize code use string replace, e.g., `content = content.replace(/stuff-to-replace/g, 'replaced-string');`
 
-## Day 3: Encryption I (Introduction)
-- Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
-- Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
-
-### Caesar Cipher
-- Idea is to shift each character `k` places, this is your key
-- E.g., if `k = 3` and we have input string `the` then by shift each letter by 3 we have `wkh`
-- To decrypt the shift is performed the other way
-- Modulo arthimetic is used to wrap characters around, e.g., `x -> a` as (23 + 3) mod 26 = 0 (remember in computer science the first index is 0!)
-- Here is an example of a Caesar Cipher
-```
-this message needs to be encrypted
-```
-And once encrypted we have
-```
-sghr ldrrzfd mddcr sn ad dmbqxosdc
-```
-- Here how to write this program
-```python
-import argparse
-import string
-
-# Parse input arguments
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    'file',
-    type=str,
-    help='File to encrypt or decrypt'
-)
-parser.add_argument(
-    '-e', '--encrypt',
-    action='store_true',
-    help='Encrypt the file'
-)
-parser.add_argument(
-    '-d', '--decrypt',
-    action='store_true',
-    help='Decrypt the file'
-)
-
-args = parser.parse_args()
-
-# check if valid input
-assert not (args.encrypt and args.decrypt), "Cannot both encrypt and decrypt!"
-assert args.encrypt or args.decrypt, "No flags set!"
-
-# determines the offeset for caesar cipher
-key = 13
-
-# All ascii printable characters
-characters = string.printable
-n_chars = len(characters)
-
-
-def encrypt(in_text):
-    out_text = ''
-    for character in in_text:
-        if character in characters:
-            idx = characters.index(character)
-            # Modulus addition, i.e., if we go past n_chars wrap back to 0
-            new_idx = (idx + key) % n_chars
-            new_character = characters[new_idx]
-            out_text += new_character
-        else:
-            out_text += character
-
-    return out_text
-
-
-def decrypt(in_text):
-    out_text = ''
-    for character in in_text:
-        if character in characters:
-            idx = characters.index(character)
-            # Modulus addition, i.e., if we go past n_chars wrap back to 0
-            new_idx = (idx - key) % n_chars
-            new_character = characters[new_idx]
-            out_text += new_character
-        else:
-            out_text += character
-
-    return out_text
-
-
-# load input file
-with open(args.file, 'r') as f:
-    in_text = f.read()
-
-# rewrite file
-with open(args.file, 'w') as f:
-    if args.encrypt:
-        out_text = encrypt(in_text)
-    if args.decrypt:
-        out_text = decrypt(in_text)
-
-    f.write(out_text)
-```
-
-### Frequency Analysis
-- Letters occur with certain frequencies in English
-- We can use these letter statistics to decode the encrypted file
-- An example is found [here](https://www.youtube.com/watch?v=nikWSEjFCWg)
-
-### Introduction to Prime Numbers
-- What is a prime number?
-- There are no efficient algorithms for finding primes
-- Prime numbers are 'hard' to find, but 'easy' to test
-- Why might this be useful for security?
-
-### Miller-Rabin Primality Test
-- [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
-- Here is some python code to perform the test
-```python
-import argparse
-import random
-
-# Parse input arguments
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    'n',
-    type=int,
-    help='Odd integer larger than 2'
-)
-parser.add_argument(
-    '-k', '--n_of_iters',
-    type=int,
-    default=40,
-    help='Number of iterations of Miller-Rabin test'
-)
-
-args = parser.parse_args()
-
-# check if valid input
-assert not(args.n % 2 == 0 or args.n <= 2), "Not a valid integer!"
-assert args.n_of_iters > 0, "Not a valid number of iterations!"
-
-
-def test(n, a, t, s):
-    # x = a^s  (mod n)
-    x = pow(a, s, n)
-
-    if x == 1 or x == n - 1:
-        return True
-
-    for j in range(t - 1):
-        # x = x^2  (mod n)
-        x = pow(x, 2, n)
-
-        if x == n - 1:
-            return True
-
-    return False
-
-
-# find n = 2^t * s + 1
-n = args.n - 1
-t = 0
-while n % 2 == 0:
-    n /= 2
-    t += 1
-s = int(n)
-
-for i in range(args.n_of_iters):
-    a = random.randint(1, args.n-1)
-    is_prime = test(args.n, a, t, s)
-
-    if not is_prime:
-        print('Composite')
-        exit()
-
-print('Probably Prime')
-```
-
-
-## Day 4: Encryption II (Public Key Cryptography)
-- Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
-
-### RSA Motivation and Intro
-
-## Day 5: Ransomware
-
-Work through this as a class [link](https://github.com/jimmy-ly00/Ransomware-PoC)
