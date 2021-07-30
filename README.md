@@ -426,7 +426,7 @@ data.message = sanitize_input(data.message);
 ## Day 3: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
 - Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
-- 
+
 ### Caesar Cipher
 - Idea is to shift each character `k` places, this is your key
 - E.g., if `k = 3` and we have input string `the` then by shift each letter by 3 we have `wkh`
