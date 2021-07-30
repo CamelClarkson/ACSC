@@ -532,7 +532,7 @@ with open(args.file, 'w') as f:
 - Prime numbers are 'hard' to find, but 'easy' to test
 - Why might this be useful for security?
 
-## Miller-Rabin Primality Test
+### Miller-Rabin Primality Test
 - [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
 - Here is some python code to perform the test
 ```python
