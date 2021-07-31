@@ -236,7 +236,6 @@ with open(args.file, 'w') as f:
 ### Introduction to Prime Numbers
 - What is a prime number?
 - There are no efficient algorithms for finding primes
-- Prime numbers are 'hard' to find, but 'easy' to test
 - Why might this be useful for security?
 
 ### Miller-Rabin Primality Test
@@ -306,6 +305,90 @@ print('Probably Prime')
 
 ## Day 3: Encryption II (Public Key Cryptography)
 - Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
+- How do we achieve this asymmetric (public) encryption?
+- One way is through prime numbers
+
+### The RSA Algorithm
+- [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
+
+#### Create Two Random Primes
+- First specify `KEY_SIZE` in this case we will use 1024 bits
+- Two primality tests
+	1. Check against low level primes
+	2. Use Miller-Rabin
+- Use `wget` to download list of first 100000 primes from `https://oeis.org/A000040/a000040.txt`
+- The python code to load this is
+```python
+
+# Load list of primes
+with open('a000040.txt', 'r') as f:
+    low_primes = f.readlines()
+
+# process list to be useable
+for entry in low_primes:
+    entry = int(entry.split(' ')[1])
+```
+- Next generate random 1024 bit odd numbers and check if prime by comparing against low-level primes
+```python
+# Check low-level primes
+def get_low_level_prime(n):
+    while True:
+        prime_candidate = random_number(n)
+
+        for div in low_primes:
+            # check if number divides prime
+            if prime_candidate % div == 0 and div**2 <= prime_candidate:
+                break
+
+        return prime_candidate
+```
+- Then use the Miller-Rabin code from yesterday as a function and create a function to generate primes
+```python
+# Perform Miller Rabin Test
+def miller_rabin(n, n_of_iters):
+    def test(n, a, t, s):
+        # x = a^s  (mod n)
+        x = pow(a, s, n)
+
+        if x == 1 or x == n - 1:
+            return True
+
+        for j in range(t - 1):
+            # x = x^2  (mod n)
+            x = pow(x, 2, n)
+
+            if x == n - 1:
+                return True
+
+        return False
+
+    # find n = 2^t * s + 1
+    n2 = n - 1
+    t = 0
+    while n2 % 2 == 0:
+        n2 /= 2
+        t += 1
+    s = int(n2)
+
+    for i in range(n_of_iters):
+        a = random.randint(1, n-1)
+        is_prime = test(n, a, t, s)
+
+        if not is_prime:
+            return False
+
+    return True
+
+
+# Get a prime number
+def get_prime(n):
+    while True:
+        prime_candidate = get_low_level_prime(n)
+
+        if miller_rabin(prime_candidate, 40):
+            return prime_candidate
+```
+
 
 ### RSA Motivation and Intro
 
