@@ -42,6 +42,17 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - `mkdir`
   - `chmod`
 
+### Review Linux File Permissions
+- Three different types of classes of users:
+  - The file owner
+  - Group members
+  - Everyone else
+- Each class has three permissions
+  - The read permission (100 = 4)
+  - The write permission (010 = 2)
+  - The execute permission (001 = 1)
+- What does `chmod 744 my_file` do to the permssions?
+
 ### Review of VIM
 - Vim (Vi IMproved) is a text editor for Linux and the preferred text editor for this course
 - Two primary modes:
@@ -58,17 +69,6 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - `^` navigate to beginning of line
   - `$` navigate to end of line
 - For further information see this [tutorial](https://www.openvim.com/)
-
-### Review Linux File Permissions
-- Three different types of classes of users:
-  - The file owner
-  - Group members
-  - Everyone else
-- Each class has three permissions
-  - The read permission (100 = 4)
-  - The write permission (010 = 2)
-  - The execute permission (001 = 1)
-- What does `chmod 744 my_file` do to the permssions?
 
 
 ### Intro to Python Scripting
