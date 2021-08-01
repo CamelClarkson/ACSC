@@ -130,7 +130,7 @@ def fib(n):
 print(fib(args.n))
 ```
 
-## Day 2: Encryption I (Introduction)
+<!-- ## Day 2: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
 - Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
 
@@ -834,3 +834,4 @@ data.message = sanitize_input(data.message);
 ```
 - To santize code use string replace, e.g., `content = content.replace(/stuff-to-replace/g, 'replaced-string');`
 
+ -->
