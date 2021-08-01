@@ -8,7 +8,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 	- Symmetric Encryption
 	- Public Key Cryptography and RSA
 	- Cross site scripting attacks and websecurity
-- Being able to think critically about software development from a security focus
+- Being able to think critically about software development from a security perspective
 
 ## Day 1: Introduction
 ### Introduction
