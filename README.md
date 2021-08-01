@@ -388,9 +388,155 @@ def get_prime(n):
         if miller_rabin(prime_candidate, 40):
             return prime_candidate
 ```
+- Our Python implementation is very slow
+- Going forward we will use the `pycrypto` library to preform this task faster
 
+### The RSA Algorithm
+#### Libraries and Argparse
+- Together we will write a complete implementation of the RSA algorithm
+- First import the necessary libraries and setup argparse
+```python
+import argparse
+import random
+import math
+from Crypto.Util import number
 
-### RSA Motivation and Intro
+PRIME_SIZE = 1024
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument(
+    '-e', '--encrypt',
+    type=str,
+    nargs=3,
+    help='Usage `rsa.py -e public_key plaintext ciphertext`'
+)
+
+parser.add_argument(
+    '-d', '--decrypt',
+    type=str,
+    nargs=3,
+    help='Usage `rsa.py -e private_key ciphertext plaintext`'
+)
+
+parser.add_argument(
+    '-g', '--generate',
+    type=str,
+    nargs=2,
+    help='Usage `rsa.py -g public_key private_key`'
+)
+
+args = parser.parse_args()
+```
+
+#### Extended Euclid Algorithm
+- We need to implement the Extended Euclid algoritm to find the inverse modulus
+```python
+def inverse_mod(e, phi):
+    """
+    For ed = 1 (mod phi)
+    Equivalent to ed + phi = gcd(e, phi)
+    """
+
+    def extended_euclid(a, b):
+        """
+        Solves ax + by = gcd(a, b)
+
+        Returns gcd(a, b), x, y
+        """
+        old_r, r = a, b
+        old_s, s = 1, 0
+        old_t, t = 0, 1
+
+        while r != 0:
+            quotient = old_r // r
+            old_r, r = r, old_r - quotient * r
+            old_s, s = s, old_s - quotient * s
+            old_t, t = r, old_t - quotient * t
+
+        return old_r, old_s, old_t
+
+    gcd, x, y = extended_euclid(e, phi)
+
+    return x
+```
+
+#### Generating Public and Private Keypairs
+- Next we need to generate the public and private keypairs
+```python
+# Generate public and private key
+if args.generate is not None:
+    p = number.getPrime(PRIME_SIZE)
+    q = number.getPrime(PRIME_SIZE)
+
+    n = p * q
+
+    # Euler's totient
+    phi = (p - 1) * (q - 1)
+
+    # Verify that e and phi(n) are coprime
+    e = random.randrange(1, phi)
+    g = math.gcd(e, phi)
+
+    while g != 1:
+        e = random.randrange(1, phi)
+        g = math.gcd(e, phi)
+
+    # Use Extended Euclid's Algorihtm to generate the private key
+    d = inverse_mod(e, phi)
+
+    # Save public and private keys
+    with open(args.generate[0], 'w') as f:
+        f.write('\n'.join([str(e), str(n)]))
+
+    with open(args.generate[1], 'w') as f:
+        f.write('\n'.join([str(d), str(n)]))
+```
+
+#### Encryption
+- Implement the encryption portion of the RSA algorithm
+```python
+elif args.encrypt is not None:
+    # Load public key and plaintext
+    with open(args.encrypt[0], 'r') as f:
+        e, n = f.readlines()
+
+    e = int(e)
+    n = int(n)
+
+    with open(args.encrypt[1], 'r') as f:
+        plaintext = f.read()
+
+    # Convert plaintext to numbers using ord to get unicode integer
+    # Use ord(char)^e   (mod n) to get ciphertext
+    cipher = [str(pow(ord(char), e, n)) for char in plaintext]
+
+    # Write ciphertext add newline to split encrypted characters
+    with open(args.encrypt[2], 'w') as f:
+        f.write('\n'.join(cipher))
+```
+
+#### Decryption
+- Implement the decryption porition of the RSA algorithm
+```python
+elif args.decrypt is not None:
+    # Load private key and plaintext
+    with open(args.decrypt[0], 'r') as f:
+        d, n = f.readlines()
+
+    d = int(d)
+    n = int(n)
+
+    with open(args.decrypt[1], 'r') as f:
+        ciphertext = f.readlines()
+
+    plain = [chr(pow(int(char), d, n)) for char in ciphertext]
+
+    with open(args.decrypt[2], 'w') as f:
+        f.write(''.join(plain))
+```
+- Now test out your cryptosystem!
+
 
 ## Day 4: Ransomware
 
