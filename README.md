@@ -41,6 +41,19 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - `pwd`
   - `mkdir`
   - `chmod`
+  - `man`
+  - `cat`
+  - `passwd`
+  - `whoami`
+  - `who`
+  - `history`
+  - `cp`
+  - `mv`
+  - `rm`
+  - `wc`
+  - `echo`
+  - `w`
+
 
 ### Review Linux File Permissions
 - Three different types of classes of users:
