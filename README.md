@@ -609,11 +609,9 @@ server.listen(port, () => {
 - Cross site scripting attack: [video](https://www.youtube.com/watch?v=zv0kZKC6GAM)
 
 ### Building a Chat Room Using Node.js and Socket.io
-<!-- - Download `public.tar.gz` from  -->
 - Run `npm install socket.io` to instal the socket.io plugin
 - Modify `index.html` so it contains a login portal and chat area by ading the following code
 ```html
-<!-- Enter username on login -->
 <div class="modal fade" id="username_modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -621,7 +619,6 @@ server.listen(port, () => {
 				<h4 class="modal-title">User Login</h4>
 			</div>
 			<div class="modal-body">
-				<!-- enter username  -->
 				<form onsubmit="return false;">
 					<div class="form-group">
 						<input type="text" class="form-control" id="username_field" placeholder="Enter username">
@@ -634,8 +631,7 @@ server.listen(port, () => {
 		</div>
 	</div>
 </div>
-
-<!-- chat area -->
+ 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12">
@@ -658,10 +654,8 @@ server.listen(port, () => {
 ```
 - Also include our stylesheet and client side javascript (to be created) with the following to lines in the `<head>` tag in addition to including socket.io
 ```html
-<!-- Include socket.io -->
 <script src="/socket.io/socket.io.js"></script>
 
-<!-- Include our custom stylesheet and script -->
 <link rel="stylesheet" href="/public/styles/style.css">
 <script type="text/javascript" src="/public/scripts/client.js"></script>
 ```
@@ -833,5 +827,3 @@ function sanitize_input(content) {
 data.message = sanitize_input(data.message);
 ```
 - To santize code use string replace, e.g., `content = content.replace(/stuff-to-replace/g, 'replaced-string');`
-
- -->
