@@ -12,7 +12,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 
 ## Day 1: Introduction
 ### Introduction
-- Instructos: Dr. Chen Liu and Mr. Zander Blasingame
+- Instructors: Dr. Chen Liu and Mr. Zander Blasingame
 - Students:
   - Name
   - Year
