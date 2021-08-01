@@ -149,7 +149,7 @@ print(fib(args.n))
 for i in range(10):
 	print(i)
 ```
-- Modify fibbonacci program to print out n elements of the sequence
+- Modify fibonacci program to print out n elements of the sequence
 
 <!-- ## Day 2: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
