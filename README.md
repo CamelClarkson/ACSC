@@ -1,10 +1,13 @@
 # Cyber Camp 2.0 2021
 The Cyber Camp 2.0 provides students with a thorough introduction to different types of malware and attacks.
-Students will learn about different attack vectors and implement there own attack vectors along with how to mitigate them.
+Students will learn about different concepts in cybersecurity.
 The target demographic are students in years 9-12 of schooling who have taken either a first year programming course or introductory Cyber Security Camp offered by the instructors.
 
 ## Goals
-- Understanding of different types of attacks **list them out once the course is finished**
+- Understanding of different types of concepts in cybersecurity:
+	- Symmetric Cryptography
+	- Public Key Cryptography and RSA
+	- Cross site scripting attacks and websecurity
 - Being able to think critically about software development from a security focus
 
 ## Day 1: Introduction
