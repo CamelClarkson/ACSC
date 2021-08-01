@@ -20,8 +20,6 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - Why did you choose this course
   - What is your anticipated field of study
 
-### Linux Overview
-
 
 ### Additional Setup for Windows Users
 - Install the free home edition of [MobaXterm](https://mobaxterm.mobatek.net/download.html)
