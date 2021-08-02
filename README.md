@@ -81,17 +81,18 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - `^` navigate to beginning of line
   - `$` navigate to end of line
 - For further information see this [tutorial](https://www.openvim.com/)
+- Redirect the output of the `w` or `who` command to a file, then execise using VIM on this file.
+
+### Intro to Python Scripting
+- [What is Python?](https://youtu.be/Y8Tko2YC5hA)
+- Python is very powerful scripting language used for machine learning, scientific computer, web development, software engineering, data science, and many more fields
+- Python has a simple syntax that is designed to be readable and expressive
 - Now use Vim to write a file called `helloworld.py`
 ```python
 # Hello world python program
   
 print("Hello World!")
 ```
-
-### Intro to Python Scripting
-- [What is Python?](https://youtu.be/Y8Tko2YC5hA)
-- Python is very powerful scripting language used for machine learning, scientific computer, web development, software engineering, data science, and many more fields
-- Python has a simple syntax that is designed to be readable and expressive
 - To run the script from previoussection, enter `python3 helloworld.py` on command line
 
 #### Python Script on Fibonacci sequence
