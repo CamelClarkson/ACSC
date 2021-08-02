@@ -1,7 +1,8 @@
 # Cyber Camp 2.0 2021
-The Cyber Camp 2.0 provides students with a thorough introduction to different types of malware and attacks.
-Students will learn about different concepts in cybersecurity.
-The target demographic are students in years 9-12 of schooling who have taken either a first year programming course or introductory Cyber Security Camp offered by the instructors.
+Cyber Camp 2.0 is designed to engage and encourage the students to think about the more advanced computer systems and internet resources they interact with daily, from a strong security posture. The students will learn about web server, advanced scripting, and understand representative cyber-attacks and cyber defense mechanisms. The camp encourages critical thinking, applied learning, and engineering methods and reasoning. Cyber Camp 2.0 is great prep for those students who wants to further their knowledge from Cyber Camp 1.0 (or a first-year programming course) and looking to become a computer/IT technician and/or looking into a college degree in Computer Science, Computer Engineering, or other Computer/IT related majors!
+
+<!-- The Cyber Camp 2.0 provides students with a thorough introduction to different types of malware and attacks.
+The target demographic are students in years 9-12 of schooling who have taken either a first year programming course or introductory Cyber Security Camp offered by the instructors. -->
 
 ## Goals
 - Understanding of different types of concepts in cybersecurity:
@@ -80,11 +81,18 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - `^` navigate to beginning of line
   - `$` navigate to end of line
 - For further information see this [tutorial](https://www.openvim.com/)
-
+- Now use Vim to write a file called `helloworld.py`
+```python
+# Hello world python program
+  
+print("Hello World!");
+```
 
 ### Intro to Python Scripting
+- [What is Python?](https://youtu.be/Y8Tko2YC5hA)
 - Python is very powerful scripting language used for machine learning, scientific computer, web development, software engineering, data science, and many more fields
 - Python has a simple syntax that is designed to be readable and expressive
+- To run the script from previoussection, enter `python3 helloworld.py` on command line
 
 #### First Python Script with the Fibonacci sequence
 - [Fibonacci sequence](https://youtu.be/v6PTrc0z4w4) is a famous recurrence relationship that occurs often in nature
