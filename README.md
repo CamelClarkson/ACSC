@@ -160,11 +160,7 @@ for i in range(10):
 ```
 - Modify fibonacci program to print out n elements of the sequence
 
-### Introduction to Prime Numbers
-- What is a prime number?
-- There are no efficient algorithms for finding primes
-- Why might this be useful for security?
-- Write a program to print out the first 100 primes using python
+
 
 <!-- ## Day 2: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
@@ -268,6 +264,12 @@ with open(args.file, 'w') as f:
 - Letters occur with certain frequencies in English
 - We can use these letter statistics to decode the encrypted file
 - An example is found [here](https://www.youtube.com/watch?v=nikWSEjFCWg)
+
+
+### Introduction to Prime Numbers
+- What is a prime number?
+- There are no efficient algorithms for finding primes
+- Why might this be useful for security?
 
 ### Miller-Rabin Primality Test
 - [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
