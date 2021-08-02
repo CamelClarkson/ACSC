@@ -85,7 +85,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 ```python
 # Hello world python program
   
-print("Hello World!");
+print("Hello World!")
 ```
 
 ### Intro to Python Scripting
@@ -94,7 +94,7 @@ print("Hello World!");
 - Python has a simple syntax that is designed to be readable and expressive
 - To run the script from previoussection, enter `python3 helloworld.py` on command line
 
-#### First Python Script with the Fibonacci sequence
+#### Python Script on Fibonacci sequence
 - [Fibonacci sequence](https://youtu.be/v6PTrc0z4w4) is a famous recurrence relationship that occurs often in nature
 - The first two elements are `f[0] = 1` and `f[1] = 1`
 - Then for any `n > 1` we have `f[n] = f[n-1] + f[n-2]`
