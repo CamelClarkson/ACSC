@@ -97,7 +97,7 @@ print("Hello World!")
 
 #### Python Script on Fibonacci sequence
 - [Fibonacci sequence](https://youtu.be/v6PTrc0z4w4) is a famous recurrence relationship that occurs often in nature
-- The first two elements are `f[0] = 1` and `f[1] = 1`
+- The first two elements are `f[0] = 0` and `f[1] = 1`
 - Then for any `n > 1` we have `f[n] = f[n-1] + f[n-2]`
 - We can write a recurisive python function for this
 ```python
