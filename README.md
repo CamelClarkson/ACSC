@@ -81,7 +81,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   - `^` navigate to beginning of line
   - `$` navigate to end of line
 - For further information see this [tutorial](https://www.openvim.com/)
-- Redirect the output of the `w` or `who` command to a file, then execise using VIM on this file.
+- Redirect the output of the `w` or `who` command to a file, then read using VIM on this file
 
 ### Intro to Python Scripting
 - [What is Python?](https://youtu.be/Y8Tko2YC5hA)
