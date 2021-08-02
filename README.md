@@ -85,7 +85,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 
 ### Intro to Python Scripting
 - [What is Python?](https://youtu.be/Y8Tko2YC5hA)
-- Python is very powerful scripting language used for machine learning, scientific computer, web development, software engineering, data science, and many more fields
+- Python is very powerful scripting language used for machine learning, scientific computing, web development, software engineering, data science, and many more fields
 - Python has a simple syntax that is designed to be readable and expressive
 - Now use Vim to write a file called `helloworld.py`
 ```python
