@@ -87,7 +87,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 - Python has a simple syntax that is designed to be readable and expressive
 
 #### First Python Script with the Fibonacci sequence
-- Fibonacci sequence is a famous recurrence relationship that occurs often in nature
+- [Fibonacci sequence](https://youtu.be/v6PTrc0z4w4) is a famous recurrence relationship that occurs often in nature
 - The first two elements are `f[0] = 1` and `f[1] = 1`
 - Then for any `n > 1` we have `f[n] = f[n-1] + f[n-2]`
 - We can write a recurisive python function for this
