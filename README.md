@@ -93,7 +93,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
   
 print("Hello World!")
 ```
-- To run the script from previoussection, enter `python3 helloworld.py` on command line
+- To run the script, enter `python3 helloworld.py` on command line
 
 #### Python Script on Fibonacci sequence
 - [Fibonacci sequence](https://youtu.be/v6PTrc0z4w4) is a famous recurrence relationship that occurs often in nature
@@ -281,7 +281,7 @@ with open(args.file, 'w') as f:
 ### Introduction to Prime Numbers
 - What is a prime number?
 - There are no efficient algorithms for finding primes
-- Why might this be useful for security?
+- Why might this be useful for security? [Video](https://youtu.be/56fa8Jz-FQQ)
 
 ### Miller-Rabin Primality Test
 - [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
