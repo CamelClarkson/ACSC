@@ -179,7 +179,7 @@ And once encrypted we have
 ```
 sghr ldrrzfd mddcr sn ad dmbqxosdc
 ```
-- Here how to write this program
+- Here is how to write this program
 ```python
 import argparse
 import string
