@@ -163,6 +163,18 @@ for i in range(10):
 
 
 ## Day 2: Encryption I (Introduction)
+### Python Review
+- To print a python object use `print(my_object)`
+- To define a function write
+```python
+def my_func(var1, var2):
+	# code here
+	return result
+```
+- Remember to use TABS not SPACES when performing indentation
+- Write a for loop to print `x**2` for values of 0 to 9
+
+### Encryption
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
 - Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
 
