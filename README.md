@@ -162,7 +162,7 @@ for i in range(10):
 
 
 
-<!-- ## Day 2: Encryption I (Introduction)
+## Day 2: Encryption I (Introduction)
 - Goal is to take plaintext, i.e. content, and obsfucate in a way (encryption) that only some one with the key can recover the plaintext (decryption)
 - Watch this intro [video](https://www.youtube.com/watch?v=fNC3jCCGJ0o)
 
@@ -336,7 +336,7 @@ print('Probably Prime')
 ```
 
 
-## Day 3: Encryption II (Public Key Cryptography)
+<!-- ## Day 3: Encryption II (Public Key Cryptography)
 - Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
 - How do we achieve this asymmetric (public) encryption?
 - One way is through prime numbers
