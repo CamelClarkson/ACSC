@@ -358,7 +358,6 @@ print('Probably Prime')
 - [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
 
 #### Create Two Random Primes
-- First specify `KEY_SIZE` in this case we will use 1024 bits
 - Two primality tests
 	1. Check against low level primes
 	2. Use Miller-Rabin
