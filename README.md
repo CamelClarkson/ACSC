@@ -375,6 +375,9 @@ for entry in low_primes:
 ```
 - Next generate random 1024 bit odd numbers and check if prime by comparing against low-level primes
 ```python
+def random_number(n):
+    return random.randrange(2**(n-1)+1, 2**n - 1, 2)
+
 # Check low-level primes
 def get_low_level_prime(n):
     while True:
@@ -436,7 +439,7 @@ def get_prime(n):
 - Our Python implementation is very slow
 - Going forward we will use the `pycrypto` library to preform this task faster
 
-### The RSA Algorithm
+<!-- ### The RSA Algorithm
 #### Libraries and Argparse
 - Together we will write a complete implementation of the RSA algorithm
 - First import the necessary libraries and setup argparse
@@ -583,7 +586,7 @@ elif args.decrypt is not None:
 - Now test out your cryptosystem!
 
 
-<!--## Day 4: Ransomware
+### Ransomware
 
 Work through this as a class [link](https://github.com/jimmy-ly00/Ransomware-PoC)
 
