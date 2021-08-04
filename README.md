@@ -278,6 +278,13 @@ with open(args.file, 'w') as f:
 - An example is found [here](https://www.youtube.com/watch?v=nikWSEjFCWg)
 
 
+## Day 3: Encryption II (Public Key Cryptography)
+- Use `wget` to download this [`.vimrc`](https://raw.githubusercontent.com/CamelClarkson/ACSC/main/.vimrc)
+- Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
+- How do we achieve this asymmetric (public) encryption?
+- One way is through prime numbers
+
+
 ### Introduction to Prime Numbers
 - What is a prime number?
 - There are no efficient algorithms for finding primes
@@ -346,12 +353,6 @@ for i in range(args.n_of_iters):
 
 print('Probably Prime')
 ```
-
-
-<!-- ## Day 3: Encryption II (Public Key Cryptography)
-- Intro [video](https://www.youtube.com/watch?v=AQDCe585Lnc)
-- How do we achieve this asymmetric (public) encryption?
-- One way is through prime numbers
 
 ### The RSA Algorithm
 - [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
@@ -583,7 +584,7 @@ elif args.decrypt is not None:
 - Now test out your cryptosystem!
 
 
-## Day 4: Ransomware
+<!--## Day 4: Ransomware
 
 Work through this as a class [link](https://github.com/jimmy-ly00/Ransomware-PoC)
 
