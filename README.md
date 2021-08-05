@@ -370,8 +370,8 @@ with open('a000040.txt', 'r') as f:
     low_primes = f.readlines()
 
 # process list to be useable
-for entry in low_primes:
-    entry = int(entry.split(' ')[1])
+for i in range(len(low_primes)):
+    low_primes[i] = int(low_primes[i].split(' ')[1])
 ```
 - Next generate random 1024 bit odd numbers and check if prime by comparing against low-level primes
 ```python
