@@ -440,6 +440,14 @@ def get_prime(n):
 - Going forward we will use the `pycrypto` library to preform this task faster
 
 ## Day 4: The RSA Algorithm
+### Review
+- Prime Number Generation
+![Block Diagram](https://github.com/CamelClarkson/ACSC/blob/main/get_prime.png?raw=true)
+- Block diagram
+
+### RSA
+![Tahir, Ari. (2015). Design and Implementation of RSA Algorithm using FPGA. International Journal of Computers & Technology. Vol 14. 6361-6367. 10.24297/ijct.v14i12.1737. ](https://www.researchgate.net/profile/Ari-Tahir/publication/282249995/figure/fig1/AS:391505266135040@1470353537053/Block-diagram-of-RSA-encryption-algorithms-IV-Design-of-the-RSA-Encryption-Algorithm-The.png)
+- Tahir, Ari. (2015). Design and Implementation of RSA Algorithm using FPGA. International Journal of Computers & Technology. Vol 14. 6361-6367. 10.24297/ijct.v14i12.1737. 
 #### Libraries and Argparse
 - Together we will write a complete implementation of the RSA algorithm
 - First import the necessary libraries and setup argparse
@@ -512,8 +520,7 @@ def inverse_mod(e, phi):
 #### Generating Public and Private Keypairs
 - Next we need to generate the public and private keypairs
 ```python
-# Generate public and private key
-if args.generate is not None:
+def generate_keys():
     p = number.getPrime(PRIME_SIZE)
     q = number.getPrime(PRIME_SIZE)
 
@@ -532,18 +539,53 @@ if args.generate is not None:
 
     # Use Extended Euclid's Algorihtm to generate the private key
     d = inverse_mod(e, phi)
-
-    # Save public and private keys
-    with open(args.generate[0], 'w') as f:
-        f.write('\n'.join([str(e), str(n)]))
-
-    with open(args.generate[1], 'w') as f:
-        f.write('\n'.join([str(d), str(n)]))
+    
+    return ((e, n), (d, n))
 ```
 
 #### Encryption
 - Implement the encryption portion of the RSA algorithm
 ```python
+def encrypt(e, n, in_file, out_file):
+    with open(in_file, 'r') as f:
+        plaintext = f.read()
+
+    # Convert plaintext to numbers using ord to get unicode integer
+    # Use ord(char)^e   (mod n) to get ciphertext
+    cipher = [str(pow(ord(char), e, n)) for char in plaintext]
+
+    # Write ciphertext add newline to split encrypted characters
+    with open(out_file, 'w') as f:
+        f.write('\n'.join(cipher))
+```
+
+#### Decryption
+- Implement the decryption porition of the RSA algorithm
+```python
+def decrypt(d, n, in_file, out_file):
+    with open(in_file, 'r') as f:
+        ciphertext = f.readlines()
+
+    plain = [chr(pow(int(char), d, n)) for char in ciphertext]
+
+    with open(out_file, 'w') as f:
+        f.write(''.join(plain))
+```
+
+#### Putting It All Together!
+- Handle user input and call correct functions
+```python
+# Generate public and private key
+if args.generate is not None:
+    public_key, private_key = generate_keys()
+
+    # Save public and private keys
+    with open(args.generate[0], 'w') as f:
+        f.write('\n'.join([str(public_key[0]), str(public_key[1])]))
+
+    with open(args.generate[1], 'w') as f:
+        f.write('\n'.join([str(private_key[0]), str(private_key[1])]))
+
 elif args.encrypt is not None:
     # Load public key and plaintext
     with open(args.encrypt[0], 'r') as f:
@@ -552,21 +594,8 @@ elif args.encrypt is not None:
     e = int(e)
     n = int(n)
 
-    with open(args.encrypt[1], 'r') as f:
-        plaintext = f.read()
+    encrypt(e, n, args.encrypt[1], args.encrypt[2])
 
-    # Convert plaintext to numbers using ord to get unicode integer
-    # Use ord(char)^e   (mod n) to get ciphertext
-    cipher = [str(pow(ord(char), e, n)) for char in plaintext]
-
-    # Write ciphertext add newline to split encrypted characters
-    with open(args.encrypt[2], 'w') as f:
-        f.write('\n'.join(cipher))
-```
-
-#### Decryption
-- Implement the decryption porition of the RSA algorithm
-```python
 elif args.decrypt is not None:
     # Load private key and plaintext
     with open(args.decrypt[0], 'r') as f:
@@ -575,13 +604,7 @@ elif args.decrypt is not None:
     d = int(d)
     n = int(n)
 
-    with open(args.decrypt[1], 'r') as f:
-        ciphertext = f.readlines()
-
-    plain = [chr(pow(int(char), d, n)) for char in ciphertext]
-
-    with open(args.decrypt[2], 'w') as f:
-        f.write(''.join(plain))
+    decrypt(d, n, args.decrypt[1], args.decrypt[2])
 ```
 - Now test out your cryptosystem!
 
