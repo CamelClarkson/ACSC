@@ -608,7 +608,7 @@ elif args.decrypt is not None:
 ```
 - Now test out your cryptosystem!
 
-<!-- ## Day 5: Cross Site Scriping (XSS) Attack
+## Day 5: Cross Site Scriping (XSS) Attack
 ### HTML, CSS, Javascript, and Node.js Review
 - What does HTML do?
 - What does CSS do?
