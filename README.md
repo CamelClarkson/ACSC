@@ -439,7 +439,7 @@ def get_prime(n):
 - Our Python implementation is very slow
 - Going forward we will use the `pycrypto` library to preform this task faster
 
-<!-- ### The RSA Algorithm
+## Day 4: The RSA Algorithm
 #### Libraries and Argparse
 - Together we will write a complete implementation of the RSA algorithm
 - First import the necessary libraries and setup argparse
@@ -584,7 +584,6 @@ elif args.decrypt is not None:
         f.write(''.join(plain))
 ```
 - Now test out your cryptosystem!
-
 
 ### Ransomware
 
