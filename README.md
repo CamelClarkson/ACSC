@@ -373,7 +373,7 @@ with open('a000040.txt', 'r') as f:
 for i in range(len(low_primes)):
     low_primes[i] = int(low_primes[i].split(' ')[1])
 ```
-- Next generate random n bit odd numbers and check if prime by comparing against low-level primes
+- Next generate random n-bit odd numbers and check if prime by comparing against low-level primes
 ```python
 def random_number(n):
     return random.randrange(2**(n-1)+1, 2**n - 1, 2)
