@@ -464,7 +464,7 @@ parser.add_argument(
     '-d', '--decrypt',
     type=str,
     nargs=3,
-    help='Usage `rsa.py -e private_key ciphertext plaintext`'
+    help='Usage `rsa.py -d private_key ciphertext plaintext`'
 )
 
 parser.add_argument(
