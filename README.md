@@ -676,7 +676,7 @@ server.listen(port, () => {
 
 ### Building a Chat Room Using Node.js and Socket.io
 - Run `npm install socket.io` to instal the socket.io plugin
-- Modify `index.html` so it contains a login portal and chat area by ading the following code
+<!-- - Modify `index.html` so it contains a login portal and chat area by ading the following code
 ```html
 <div class="modal fade" id="username_modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
@@ -829,7 +829,9 @@ $(document).ready(() => {
 
 });
 ```
-- Lastly modify app.js so it contains socket.io handling
+-->
+- Download and extract using `wget` and then `tar`: [public.tar.gz](https://raw.githubusercontent.com/CamelClarkson/ACSC/main/public.tar.gz)
+- Modify app.js so it contains socket.io handling
 ```js
 // setup socket handling
 io.on('connection', (socket) => {
