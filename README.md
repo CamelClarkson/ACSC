@@ -390,7 +390,7 @@ def get_low_level_prime(n):
 
         return prime_candidate
 ```
-- Then use the Miller-Rabin code from yesterday as a function and create a function to generate primes
+- Then use the Miller-Rabin code as a function and create a function to generate primes
 ```python
 # Perform Miller Rabin Test
 def miller_rabin(n, n_of_iters):
