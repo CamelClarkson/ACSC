@@ -870,6 +870,63 @@ app.get('/public/styles/style.css', (req, res) => {
 });
 ```
 
+- The complete code will look like this
+```javascript
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const port = 8000;
+
+const { Server } = require('socket.io');
+const io = new Server(server);
+
+// serve requested files
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/public/views/index.html');
+});
+
+app.get('/public/scripts/client.js', (req, res) => {
+	res.sendFile(__dirname + '/public/scripts/client.js');
+});
+
+app.get('/public/styles/style.css', (req, res) => {
+	res.sendFile(__dirname + '/public/styles/style.css');
+});
+
+// setup socket handling
+io.on('connection', (socket) => {
+	// get connected users data
+	socket.on('init', (data) => {
+		socket.username = data;
+		console.log(data + ' has joined the chat')
+	});
+
+	// send users messages
+	socket.on('msg', (data) => {
+		// data.message = sanitize_input(data.message);
+		console.log(data.username + ': ' + data.message);
+		io.sockets.emit('msg', data);
+	});
+
+	socket.on('disconnect', () => {
+		if (socket.users !== undefined) {
+			console.log(socket.username + ' has disconnected.');
+			io.sockets.emit('msg', {
+				username: null,
+				message: socket.username + ' has disconnected.',
+				admin: true
+			});
+		}
+	});
+});
+
+// set server to listen to specific port
+server.listen(port, () => {
+	console.log('listening on port: ' + port);
+});
+```
+
 ### Demo XSS Attack
 - Note we can execute arbitrary code on every client's instance of the chatroom
 
