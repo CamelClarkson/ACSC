@@ -837,6 +837,9 @@ $(document).ready(() => {
 - Download and extract using `wget` and then `tar`: [public.tar.gz](https://raw.githubusercontent.com/CamelClarkson/ACSC/main/public.tar.gz)
 - Modify app.js so it contains socket.io handling
 ```js
+const { Server } = require('socket.io');
+const io = new Server(server);
+
 // setup socket handling
 io.on('connection', (socket) => {
 	// get connected users data
