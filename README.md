@@ -1,4 +1,4 @@
-# Cyber Camp 2.0 2021
+# Cyber Camp 2.0 2022
 Cyber Camp 2.0 is designed to engage and encourage the students to think about the more advanced computer systems and internet resources they interact with daily, from a strong security posture. The students will learn about web server, advanced scripting, and understand representative cyber-attacks and cyber defense mechanisms. The camp encourages critical thinking, applied learning, and engineering methods and reasoning. Cyber Camp 2.0 is great prep for those students who wants to further their knowledge from Cyber Camp 1.0 and looking to become a computer/IT technician and/or looking into a college degree in Computer Science, Computer Engineering, or other Computer/IT related majors!
 
 <!-- The Cyber Camp 2.0 provides students with a thorough introduction to different types of malware and attacks.
