@@ -27,7 +27,7 @@ The target demographic are students in years 9-12 of schooling who have taken ei
 - Create an SSH session
 
 ### Connect to the Server
-- IP address is `3.12.96.179`
+- IP address is `52.15.176.176`
 - Account usernames are given by `<fistletter><lastname>`
 - The default password is `password`
 - Use the ssh command to connect to the server
