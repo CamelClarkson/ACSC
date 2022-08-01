@@ -175,7 +175,7 @@ for i in range(10):
 
 ### Miller-Rabin Primality Test
 - [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
-- Here is some python code to perform the test
+- Here is some a template to get started
 ```python
 import argparse
 import random
@@ -202,29 +202,11 @@ assert args.n_of_iters > 0, "Not a valid number of iterations!"
 
 
 def test(n, a, t, s):
-    # x = a^s  (mod n)
-    x = pow(a, s, n)
-
-    if x == 1 or x == n - 1:
-        return True
-
-    for j in range(t - 1):
-        # x = x^2  (mod n)
-        x = pow(x, 2, n)
-
-        if x == n - 1:
-            return True
-
-    return False
+    # test if n is probably prime relative to a	
+    pass
 
 
 # find n = 2^t * s + 1
-n = args.n - 1
-t = 0
-while n % 2 == 0:
-    n /= 2
-    t += 1
-s = int(n)
 
 for i in range(args.n_of_iters):
     a = random.randint(1, args.n-1)
