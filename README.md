@@ -761,7 +761,7 @@ app.get('/public/styles/style.css', (req, res) => {
 });
 ```
 
-### Demo XSS Attack
+<!--### Demo XSS Attack
 - Note we can execute arbitrary code on every client's instance of the chatroom
 
 ### Mitigating the XSS Attack
