@@ -237,10 +237,7 @@ for i in range(args.n_of_iters):
 print('Probably Prime')
 ```
 
-### The RSA Algorithm
-- [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
-
-#### Create Two Random Primes
+### Create Two Random Primes
 - Two primality tests
 	1. Check against low level primes
 	2. Use Miller-Rabin
@@ -319,7 +316,7 @@ def get_prime(n):
         if miller_rabin(prime_candidate, 40):
             return prime_candidate
 ```
--->
+
 - Our Python implementation is very slow
 - Going forward we will use the `pycrypto` library to preform this task faster
 
