@@ -207,7 +207,7 @@ for i in range(args.n_of_iters):
 print('Probably Prime')
 ```
 
-<!-- ### The RSA Algorithm
+### The RSA Algorithm
 - [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
 
 #### Create Two Random Primes
@@ -227,7 +227,7 @@ for i in range(len(low_primes)):
     low_primes[i] = int(low_primes[i].split(' ')[1])
 ```
 - Next generate random n-bit odd numbers and check if prime by comparing against low-level primes
-```python
+<!--```python
 def random_number(n):
     return random.randrange(2**(n-1)+1, 2**n - 1, 2)
 
@@ -243,8 +243,9 @@ def get_low_level_prime(n):
 
         return prime_candidate
 ```
+-->
 - Then use the Miller-Rabin code as a function and create a function to generate primes
-```python
+<!--```python
 # Perform Miller Rabin Test
 def miller_rabin(n, n_of_iters):
     def test(n, a, t, s):
@@ -289,6 +290,7 @@ def get_prime(n):
         if miller_rabin(prime_candidate, 40):
             return prime_candidate
 ```
+-->
 - Our Python implementation is very slow
 - Going forward we will use the `pycrypto` library to preform this task faster
 
