@@ -328,8 +328,6 @@ def get_prime(n):
 
 ### RSA
 - [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
-![Tahir, Ari. (2015). Design and Implementation of RSA Algorithm using FPGA. International Journal of Computers & Technology. Vol 14. 6361-6367. 10.24297/ijct.v14i12.1737. ](https://www.researchgate.net/profile/Ari-Tahir/publication/282249995/figure/fig1/AS:391505266135040@1470353537053/Block-diagram-of-RSA-encryption-algorithms-IV-Design-of-the-RSA-Encryption-Algorithm-The.png)
-- Tahir, Ari. (2015). Design and Implementation of RSA Algorithm using FPGA. International Journal of Computers & Technology. Vol 14. 6361-6367. 10.24297/ijct.v14i12.1737. 
 #### Libraries and Argparse
 - Together we will write a complete implementation of the RSA algorithm
 - First import the necessary libraries and setup argparse
