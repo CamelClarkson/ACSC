@@ -320,13 +320,14 @@ def get_prime(n):
 - Our Python implementation is very slow
 - Going forward we will use the `pycrypto` library to preform this task faster
 
-<!--## Day 3: The RSA Algorithm
+## Day 3: The RSA Algorithm
 ### Review
 - Prime Number Generation
 ![Block Diagram](https://github.com/CamelClarkson/ACSC/blob/main/get_prime.png?raw=true)
 - Block diagram
 
 ### RSA
+- [RSA](https://www.youtube.com/watch?v=Z8M2BTscoD4)
 ![Tahir, Ari. (2015). Design and Implementation of RSA Algorithm using FPGA. International Journal of Computers & Technology. Vol 14. 6361-6367. 10.24297/ijct.v14i12.1737. ](https://www.researchgate.net/profile/Ari-Tahir/publication/282249995/figure/fig1/AS:391505266135040@1470353537053/Block-diagram-of-RSA-encryption-algorithms-IV-Design-of-the-RSA-Encryption-Algorithm-The.png)
 - Tahir, Ari. (2015). Design and Implementation of RSA Algorithm using FPGA. International Journal of Computers & Technology. Vol 14. 6361-6367. 10.24297/ijct.v14i12.1737. 
 #### Libraries and Argparse
@@ -490,7 +491,7 @@ elif args.decrypt is not None:
 - Now test out your cryptosystem!
 - Ransomware [Video1](https://youtu.be/FV-HW3NYdF8)[Video2](https://youtu.be/Vkjekr6jacg)
 
-## Day 5: Cross Site Scriping (XSS) Attack
+<!--## Day 5: Cross Site Scriping (XSS) Attack
 ### HTML, CSS, Javascript, and Node.js Review
 - What does HTML do?
 - What does CSS do?
