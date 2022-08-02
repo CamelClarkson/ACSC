@@ -121,7 +121,7 @@ print(fib(n))
 - To run the script enter `python3 fib.py`
 - Currently, you have to manually edit the script to change values for `n`
 - What if you could pass command line arguments?
-- Use `argpase` see the example code below
+- Use `argparse` see the example code below
 ```python
 # use the import keyword to import additional libraries!
 import argparse
