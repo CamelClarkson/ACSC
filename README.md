@@ -181,20 +181,8 @@ import argparse
 import random
 
 # Parse input arguments
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    'n',
-    type=int,
-    help='Odd integer larger than 2'
-)
-parser.add_argument(
-    '-k', '--n_of_iters',
-    type=int,
-    default=40,
-    help='Number of iterations of Miller-Rabin test'
-)
-
-args = parser.parse_args()
+# User argparse to get argument `n` the number to test and `n_of_iters` the number of iterations for the test
+# Let `n_of_iters` have a default value of 40, both variables are of type int
 
 # check if valid input
 assert not(args.n % 2 == 0 or args.n <= 2), "Not a valid integer!"
