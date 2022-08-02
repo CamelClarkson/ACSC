@@ -181,8 +181,20 @@ import argparse
 import random
 
 # Parse input arguments
-# User argparse to get argument `n` the number to test and `n_of_iters` the number of iterations for the test
-# Let `n_of_iters` have a default value of 40, both variables are of type int
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'n',
+    type=int,
+    help='Odd integer larger than 2'
+)
+parser.add_argument(
+    '-k', '--n_of_iters',
+    type=int,
+    default=40,
+    help='Number of iterations of Miller-Rabin test'
+)
+
+args = parser.parse_args()
 
 # check if valid input
 assert not(args.n % 2 == 0 or args.n <= 2), "Not a valid integer!"
@@ -190,11 +202,29 @@ assert args.n_of_iters > 0, "Not a valid number of iterations!"
 
 
 def test(n, a, t, s):
-    # test if n is probably prime relative to a	
-    pass
+    # x = a^s  (mod n)
+    x = pow(a, s, n)
+
+    if x == 1 or x == n - 1:
+        return True
+
+    for j in range(t - 1):
+        # x = x^2  (mod n)
+        x = pow(x, 2, n)
+
+        if x == n - 1:
+            return True
+
+    return False
 
 
 # find n = 2^t * s + 1
+n = args.n - 1
+t = 0
+while n % 2 == 0:
+    n /= 2
+    t += 1
+s = int(n)
 
 for i in range(args.n_of_iters):
     a = random.randint(1, args.n-1)
@@ -227,7 +257,7 @@ for i in range(len(low_primes)):
     low_primes[i] = int(low_primes[i].split(' ')[1])
 ```
 - Next generate random n-bit odd numbers and check if prime by comparing against low-level primes
-<!--```python
+```python
 def random_number(n):
     return random.randrange(2**(n-1)+1, 2**n - 1, 2)
 
@@ -243,9 +273,8 @@ def get_low_level_prime(n):
 
         return prime_candidate
 ```
--->
 - Then use the Miller-Rabin code as a function and create a function to generate primes
-<!--```python
+```python
 # Perform Miller Rabin Test
 def miller_rabin(n, n_of_iters):
     def test(n, a, t, s):
