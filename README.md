@@ -175,7 +175,7 @@ for i in range(10):
 
 ### Miller-Rabin Primality Test
 - [Algorithm](https://www.youtube.com/watch?v=p5S0C8oKpsM) to test if an integer is prime developed by Dr. Gary Miller and Dr. Michael Rain in the later 1970s
-- Here is some a template to get started
+- Here is a template to get started
 ```python
 import argparse
 import random
