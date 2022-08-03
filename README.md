@@ -547,7 +547,7 @@ server.listen(port, () => {
 - Modify the template to include your name in the `<h1>` tag
 #### Running and Connecting to the Server
 - Run the server in the background using the command `node app.js &`
-- To see your webpage, open up your preferred web browser and navigate to `http://3.12.96.179:<your-port-number-here>`
+- To see your webpage, open up your preferred web browser and navigate to `http://52.15.176.176:<your-port-number-here>`
 - Ensure that you see your web page
 - Kill the node server using the `kill` command
 
@@ -710,7 +710,7 @@ $(document).ready(() => {
 });
 ```
 
-- Download and extract using `wget` and then `tar`: [public.tar.gz](https://raw.githubusercontent.com/CamelClarkson/ACSC/main/public.tar.gz)
+<!-- Download and extract using `wget` and then `tar`: [public.tar.gz](https://raw.githubusercontent.com/CamelClarkson/ACSC/main/public.tar.gz) -->
 - Modify app.js so it contains socket.io handling
 ```js
 const { Server } = require('socket.io');
