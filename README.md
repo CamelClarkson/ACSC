@@ -410,11 +410,11 @@ def generate_keys():
     phi = (p - 1) * (q - 1)
 
     # Verify that e and phi(n) are coprime
-    e = random.randrange(1, phi)
+    e = random.randrange(3, phi)
     g = math.gcd(e, phi)
 
     while g != 1:
-        e = random.randrange(1, phi)
+        e = random.randrange(3, phi)
         g = math.gcd(e, phi)
 
     # Use Extended Euclid's Algorihtm to generate the private key
