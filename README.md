@@ -489,7 +489,7 @@ elif args.decrypt is not None:
 - Now test out your cryptosystem!
 - Ransomware [Video1](https://youtu.be/FV-HW3NYdF8)[Video2](https://youtu.be/Vkjekr6jacg)
 
-<!--## Day 5: Cross Site Scriping (XSS) Attack
+## Day 5: Cross Site Scriping (XSS) Attack
 ### HTML, CSS, Javascript, and Node.js Review
 - What does HTML do?
 - What does CSS do?
@@ -561,7 +561,7 @@ server.listen(port, () => {
 
 ### Building a Chat Room Using Node.js and Socket.io
 - Run `npm install socket.io` to instal the socket.io plugin
-<!-- - Modify `index.html` so it contains a login portal and chat area by ading the following code
+- Modify `index.html` so it contains a login portal and chat area by ading the following code
 ```html
 <div class="modal fade" id="username_modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
@@ -757,8 +757,7 @@ app.get('/public/styles/style.css', (req, res) => {
 	res.sendFile(__dirname + '/public/styles/style.css');
 });
 ```
-
-<!--### Demo XSS Attack
+### Demo XSS Attack
 - Note we can execute arbitrary code on every client's instance of the chatroom
 
 ### Mitigating the XSS Attack
