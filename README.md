@@ -489,12 +489,7 @@ elif args.decrypt is not None:
 - Now test out your cryptosystem!
 - Ransomware [Video1](https://youtu.be/FV-HW3NYdF8)[Video2](https://youtu.be/Vkjekr6jacg)
 
-## Day 5: Cross Site Scriping (XSS) Attack
-### HTML, CSS, Javascript, and Node.js Review
-- What does HTML do?
-- What does CSS do?
-- What does Javascript do?
-- What is Node.js?
+## Day 4: Cross Site Scriping (XSS) Attack
 
 ### Build Basic Bootstrap Webpage with Node.js
 - Bootstrap is a tool to "quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins."
