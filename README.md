@@ -785,7 +785,7 @@ data.message = sanitize_input(data.message);
 ```python
 def test(n=1e10):
 	sum = 0
-	for i in range(n):
+	for i in range(int(n)):
 		sum += i
 	
 	return sum
@@ -795,11 +795,12 @@ def test(n=1e10):
 import timeit
 import numpy as np
 
-n = 1e5
+n = 1e2
 
 times = timeit.repeat(
 	stmt='test(n)',
 	setup=f'n={n!r}',
+	globals=globals(),
 	number=1000,
 	repeat=10
 )
@@ -811,6 +812,7 @@ n = 1e5
 times = timeit.repeat(
 	stmt='test(n)',
 	setup=f'n={n!r}',
+	globals=globals(),
 	number=1000,
 	repeat=10
 )
