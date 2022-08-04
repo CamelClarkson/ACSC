@@ -777,3 +777,43 @@ function sanitize_input(content) {
 data.message = sanitize_input(data.message);
 ```
 - To santize code use string replace, e.g., `content = content.replace(/stuff-to-replace/g, 'replaced-string');`
+
+## Day 5: Timing Based Attacks
+- Example [video](https://www.youtube.com/watch?v=2-zQp26nbY8)
+- Use timeit library to measure execution time
+- Create a test function
+```python
+def test(n=1e10):
+	sum = 0
+	for i in range(n):
+		sum += i
+	
+	return sum
+```
+- Use timeit to measure execution
+```python
+import timeit
+import numpy as np
+
+n = 1e5
+
+times = timeit.repeat(
+	stmt='test(n)',
+	setup=f'n={n!r}',
+	number=1000,
+	repeat=10
+)
+
+print(np.min(times))
+
+n = 1e5
+
+times = timeit.repeat(
+	stmt='test(n)',
+	setup=f'n={n!r}',
+	number=1000,
+	repeat=10
+)
+
+print(np.min(times))
+```
