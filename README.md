@@ -819,3 +819,96 @@ times = timeit.repeat(
 
 print(np.min(times))
 ```
+
+### Password Verifier
+- Create a file named `password_cracker.py`
+- Create a dictionary containing a username and password
+- Create a function to the check a password character by character
+```python
+allowed_chars = string.ascii_letters + string.digits + string.punctuation
+password_database = {'jdoe': '4we1@kj&0(_5>+/r6a.<!%gFd'}
+
+def check_password(user, guess):
+    actual = password_database[user]
+    if len(guess) != len(actual):
+        return False
+
+    for i in range(len(actual)):
+        if guess[i] != actual[i]:
+             return False
+
+    return True
+```
+
+### Developing the Password Cracker
+- Create a function to generate a random string of certain length
+```python
+def random_str(length):
+    return ''.join(random.choices(allowed_chars, k=length))
+```
+- Develop a function to crack the lenght of the password using a timing based attack
+```python
+def crack_length(user, max_length=32):
+    trials = 1000
+    times = np.zeros(max_length)
+
+    for i in range(max_length):
+        i_times = timeit.repeat(
+                stmt='check_password(user, x)',
+                setup=f'user={user!r};x=random_str({i!r})',
+                globals=globals(),
+                number=trials,
+                repeat=10
+        )
+
+        times[i] = np.min(i_times)
+
+    return int(np.argmax(times))
+```
+- Next create a function to crack the password once the length is determined
+```python
+def crack_password(user, length):
+    guess = random_str(length)
+    trials = 1000
+
+    count = 0
+
+    while True:
+        i = count % length
+
+        for c in allowed_chars:
+            alt = guess[:i] + c + guess[i+1:]
+
+            alt_time = timeit.repeat(
+                stmt='check_password(user, x)',
+                setup=f'user={user!r};x={alt!r}',
+                globals=globals(),
+                number=trials,
+                repeat=10
+            )
+
+            guess_time = timeit.repeat(
+                stmt='check_password(user, x)',
+                setup=f'user={user!r};x={guess!r}',
+                globals=globals(),
+                number=trials,
+                repeat=10
+            )
+
+            if check_password(user, alt):
+                return alt
+
+            if np.min(alt_time) > np.min(guess_time):
+                guess = alt
+                print(guess)
+
+        count += 1
+```
+- Finally put it all together to crack the password
+```python
+user = 'jdoe'
+length = crack_length(user)
+print(f'Most likely length is {length}')
+password = crack_password(user, length)
+print(f'Cracked password for {user} is {password}')
+```
